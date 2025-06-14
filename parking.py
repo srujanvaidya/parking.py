@@ -1,5 +1,5 @@
 
-#code for 100 vehicle parkingz
+#code for 100 vehicle parking
 
 class Parking:
     def __init__(self):
@@ -20,6 +20,7 @@ class Parking:
             break
         if all(k=="occupied" for k in self.lot.values()):                # [.values] checks only value in the dictionary
                 print("\nparking is full")
+                print("\n no available slots")
 
 def main():
 
