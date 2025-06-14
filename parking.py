@@ -1,4 +1,3 @@
-
 #code for 100 vehicle parking
 
 class Parking:
@@ -6,34 +5,58 @@ class Parking:
         self.lot={i:"free" for i in range (1,101)}                       # makes every value in the dictionary free
 
     def park(self):
+
         print("these are the available slots",self.lot)
+        carno = (str(input("enter car no eg:MH01RT2466:")))
 
         for j in range(1,101):
 
-
-            if self.lot[j] == "free":
-                self.lot[j] = "occupied"
+            if len(carno) == 10:                                       #cannot use car no less or more than 10 as per nameplate
+                                                                       #car arrival
+                pass
+                if self.lot[j] == "free":
+                    self.lot[j] = carno
+                else:
+                    continue
             else:
-                continue
+                print("not a valid no,redo it")
 
             print("\nCar parked at slot no:", j, self.lot)
             break
-        if all(k=="occupied" for k in self.lot.values()):                # [.values] checks only value in the dictionary
+
+        if all(k=="occupied" for k in self.lot.values()):               # [.values] checks only value in the dictionary
                 print("\nparking is full")
                 print("\n no available slots")
+
+    def depart(self):
+
+        carex =str(input("Enter car no"))                              # departure of the car
+
+        for k in range(1,101):
+
+            if len(carex) == 10:
+                if self.lot[k] == carex:
+                    self.lot[k] = "free"
+                else:
+
+                 continue
+        print("Empty slots",self.lot)
 
 def main():
 
     p = Parking()
     while True:
 
-        no=int(input("1:park\n2:exit app\nenter a val:"))
+        no=int(input("\n1:park\n2:depart\n3.quit app\nenter a val:"))
         match no:
             case 1:
-               p.park()
+                p.park()
 
             case 2:
-                print("quit application")
+                p.depart()
+
+            case 3:
+                print("quit applicaiton")
                 break
 
 if __name__ == "__main__":
