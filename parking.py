@@ -1,4 +1,4 @@
-#code for 100 vehicle parking
+#code for 100 vehicle parkingz
 
 class Parking:
     def __init__(self):
