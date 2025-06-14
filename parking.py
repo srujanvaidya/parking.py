@@ -1,3 +1,4 @@
+
 #code for 100 vehicle parkingz
 
 class Parking:
