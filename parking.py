@@ -2,18 +2,18 @@
 
 class Parking:
     def __init__(self):
+
         self.lot={i:"free" for i in range (1,101)}                       # makes every value in the dictionary free
 
-    def park(self):
+    def park(self,carno):
 
         print("these are the available slots",self.lot)
-        carno = (str(input("enter car no eg:MH01RT2466:")))
 
         for j in range(1,101):
 
             if len(carno) == 10:                                       #cannot use car no less or more than 10 as per nameplate
-                                                                       #car arrival
-                pass
+                pass                                                         #car arrival
+
                 if self.lot[j] == "free":
                     self.lot[j] = carno
                 else:
@@ -50,7 +50,8 @@ def main():
         no=int(input("\n1:park\n2:depart\n3.quit app\nenter a val:"))
         match no:
             case 1:
-                p.park()
+                carno=str(input("enter the car no"))
+                p.park(carno)
 
             case 2:
                 p.depart()
@@ -58,6 +59,8 @@ def main():
             case 3:
                 print("quit applicaiton")
                 break
+
+
 
 if __name__ == "__main__":
     main()
