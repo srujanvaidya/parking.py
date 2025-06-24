@@ -1,17 +1,4 @@
 #code for 100 vehicle parking
-import mysql.connector
-
-mydb = mysql.connector.connect(host="localhost",
-                               user="root",
-                               passwd="unknown",
-
-                                )
-mycursor=mydb.cursor()
-#mycursor.execute("create database parking")
-#mycursor.execute("use parking")
-#mycursor.execute("create table lot(slot int primary key, carno varchar(20)")
-
-
 class Parking:
     def __init__(self):
 
