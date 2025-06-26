@@ -1,8 +1,17 @@
 #code for 100 vehicle parking
+import mysql.connector
+
 class Parking:
     def __init__(self):
 
         self.lot={i:"free" for i in range (1,101)}                       # makes every value in the dictionary free
+        self.mydb = mysql.connector.connect(host='localhost',
+                                       user='root',
+                                       passwd='srujanvaidya',
+                                       database='parking')
+
+        self.mycursor = self.mydb.cursor()
+        self.mycursor.execute("use parking")
 
     def park(self,carno):
 
@@ -15,6 +24,9 @@ class Parking:
 
                 if self.lot[j] == "free":
                     self.lot[j] = carno
+                    self.mycursor.execute("UPDATE lot SET carno = %s WHERE slot = %s",(carno,j))        #Updates the val in server
+                    self.mydb.commit()
+
                 else:
                     continue
             else:
@@ -36,6 +48,8 @@ class Parking:
             if len(carex) == 10:
                 if self.lot[k] == carex:
                     self.lot[k] = "free"
+                    self.mycursor.execute("UPDATE lot SET carno = 'free' WHERE slot = %s",(k,))         #Updates the val in the server
+                    self.mydb.commit()
                 else:
 
                  continue
@@ -58,8 +72,6 @@ def main():
             case 3:
                 print("quit applicaiton")
                 break
-
-
 
 if __name__ == "__main__":
     main()
