@@ -1,4 +1,4 @@
-#code for 100 vehicle parking[python and mysql]
+#code for 100 vehicle parking[python and mysql.]
 import sql_test
 
 class Parking:
